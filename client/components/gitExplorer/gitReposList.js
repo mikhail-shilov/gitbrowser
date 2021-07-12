@@ -11,8 +11,6 @@ const GitReposList = () => {
   const [repos, setRepos] = useState([])
 
   useEffect(() => {
-    console.log(`Now loading repo list from Github for "${userName}"`)
-    console.log(isLoading)
     axios.get(`https://api.github.com/users/${userName}/repos`)
     .then(data => data.data)
     .then(data=>{
@@ -26,8 +24,10 @@ const GitReposList = () => {
       <Head title="Hello" />
       <div className="flex items-center justify-center h-screen">
         <div className="bg-indigo-800 hover:text-red-500 text-white font-bold rounded-lg border shadow-lg p-10">
-          This is list repos of {userName}.<br/>
-          <Link to="/">Go back</Link><br/>
+          <div id="header">
+            <a id="username">Username : {userName}</a>
+            <Link to="/" id="goBack">Go back</Link><br/>
+          </div>
           {isLoading && <Placeholder/>}
           {!isLoading && repos}
           

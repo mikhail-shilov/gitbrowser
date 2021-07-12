@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Markdown from 'markdown-to-jsx'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import Head from '../head'
 import Placeholder from './gitPlaceholder'
@@ -27,9 +27,16 @@ const GitRepoInfo = () => {
     <div>
       <Head title="Hello" />
       <div className="flex items-center justify-center h-screen">
+
         <div className="bg-indigo-800 hover:text-red-500 text-white font-bold rounded-lg border shadow-lg p-10">
+        <div id="header">
+            <a id="username">Username : {userName}</a>
+            <a id="repository">Repository : {repositoryName}</a>
+            <Link to="/" id="goBack">Go back</Link><br/>
+            <Link to={`/${userName}`} id="goToUsername">Go to {userName} repository list.</Link><br/>
+        </div>
           This is text about repo {repositoryName} of {userName}.
-          <div>
+          <div id="description">
             {isLoading ? <Placeholder/> : <Markdown>{readmeText}</Markdown>}
             {`It's: ${readmeData}`}
           </div>
