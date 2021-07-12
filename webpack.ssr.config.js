@@ -170,7 +170,9 @@ const config = {
     ]
   },
   plugins: [
-	gitRevisionPlugin,
+	new GitRevisionPlugin({
+      commithashCommand: 'rev-list --max-count=1 --no-merges HEAD',
+    }),
     new StringReplacePlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/ssr/[name].css',

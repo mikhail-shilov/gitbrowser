@@ -4,7 +4,7 @@
     "description": "Boilerplate SkillCrucial",
     "main": "index.js",
 	"engines": {
-		"node": "14.x"
+		"node": "14.16.0"
 		},
     "scripts": {
         "docker-start-dev": "docker-compose -f \"docker\\DEV.docker-compose.yml\" up",

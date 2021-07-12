@@ -4,13 +4,14 @@ const fs = require('fs')
 
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { GitRevisionPlugin } = require('git-revision-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const StringReplacePlugin = require('string-replace-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 const TerserJSPlugin = require('terser-webpack-plugin')
 
-
+const gitRevisionPlugin = new GitRevisionPlugin()
 const date = +new Date()
 const APP_VERSION = Buffer.from((date - (date % (1000 * 60 * 30))).toString())
   .toString('base64')
@@ -160,6 +161,9 @@ const config = {
     ]
   },
   plugins: [
+	new GitRevisionPlugin({
+		  commithashCommand: 'rev-list --max-count=1 --no-merges HEAD',
+	  }),
     new StringReplacePlugin(),
 
     new CopyWebpackPlugin(
