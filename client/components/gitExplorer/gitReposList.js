@@ -25,8 +25,8 @@ const GitReposList = () => {
       <div className="flex items-center justify-center h-screen">
         <div className="bg-indigo-800 hover:text-red-500 text-white font-bold rounded-lg border shadow-lg p-10">
           <div id="header">
-            <a id="username">Username : {userName}</a>
-            <Link to="/" id="goBack">Go back</Link><br/>
+            <a id="repository-name">{userName}</a>
+            <Link to="/" id="go-back">Go back</Link><br/>
           </div>
           {isLoading && <Placeholder/>}
           {!isLoading && repos}

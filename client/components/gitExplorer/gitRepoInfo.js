@@ -32,8 +32,8 @@ const GitRepoInfo = () => {
         <div id="header">
             <a id="username">Username : {userName}</a>
             <a id="repository">Repository : {repositoryName}</a>
-            <Link to="/" id="goBack">Go back</Link><br/>
-            <Link to={`/${userName}`} id="goToUsername">Go to {userName} repository list.</Link><br/>
+            <Link to="/" id="go-back">Go back</Link><br/>
+            <Link to={`/${userName}`} id="go-repository-list">/{userName}</Link><br/>
         </div>
           This is text about repo {repositoryName} of {userName}.
           <div id="description">
