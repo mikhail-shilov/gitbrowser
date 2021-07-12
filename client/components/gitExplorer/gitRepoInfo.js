@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Markdown from 'markdown-to-jsx'
 import { useParams } from 'react-router-dom'
 
 import Head from '../head'
@@ -29,7 +30,7 @@ const GitRepoInfo = () => {
         <div className="bg-indigo-800 hover:text-red-500 text-white font-bold rounded-lg border shadow-lg p-10">
           This is text about repo {repositoryName} of {userName}.
           <div>
-            {isLoading ? <Placeholder/> : readmeText}
+            {isLoading ? <Placeholder/> : <Markdown>{readmeText}</Markdown>}
             {`It's: ${readmeData}`}
           </div>
         </div>
