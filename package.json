@@ -175,11 +175,5 @@
         "ignore": [
             "*.hot-update.json"
         ]
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "cross-env npm run lint && npm test",
-            "pre-push": "cross-env npm run lint && npm test"
-        }
     }
 }
