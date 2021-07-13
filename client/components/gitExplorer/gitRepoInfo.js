@@ -9,13 +9,11 @@ import Placeholder from './gitPlaceholder'
 const GitRepoInfo = () => {
   const { userName, repositoryName } = useParams()
   const [isLoading, setLoading] = useState(true)
-  const [readmeData, setReadmeData] = useState({})
   const [readmeText, setReadmeText] = useState('')
 
   useEffect(() => {
     axios.get(`https://api.github.com/repos/${userName}/${repositoryName}/readme`).then(data => data.data)
       .then(readmeRequest => {
-        setReadmeData(readmeRequest)
         axios.get(readmeRequest.download_url).then(data => data.data).then(readmeRaw => {
           setReadmeText(readmeRaw)
           setLoading(false)
@@ -34,7 +32,6 @@ const GitRepoInfo = () => {
       <main className="py-5 px-10 overflow-x-auto">
         <div id="description">
           {isLoading ? <Placeholder /> : <Markdown>{readmeText}</Markdown>}
-          {`It's: ${readmeData}`}
         </div>
       </main>
     </div>
