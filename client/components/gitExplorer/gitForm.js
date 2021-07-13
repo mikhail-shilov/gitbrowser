@@ -18,7 +18,7 @@ const GitFinder = () => {
       <Head title="GitHub explorer!" />
       <input
         type='text'
-        className='flex-grow px-2'
+        className='flex-grow rounded-lg px-2'
         autoComplete="off"
         id='input-field'
         value={inputData}
@@ -27,7 +27,7 @@ const GitFinder = () => {
       />
       <button
         type='button'
-        className="px-4 border text-white hover:bg-yellow-500"
+        className="px-4 rounded-lg border text-white hover:bg-yellow-500"
         id="search-button"
         onClick={buttonHandler}
       >Go</button>

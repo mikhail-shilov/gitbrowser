@@ -5,18 +5,17 @@ import axios from 'axios'
 import Head from '../head'
 import Placeholder from './gitPlaceholder'
 
-
 const LinkInList = props => {
   return (
-    <Link
-      className='block max-w-full overflow-x-hidden -mx-6 px-6 py-2 hover:bg-indigo-800'
-      to={`/${props.user}/${props.repo}`}>
-      {props.repo}
+    <Link to={`/${props.user}/${props.repo}`}>
+      <div className='px-5 max-w-full px-6 py-2 hover:bg-indigo-800'>
+        <a className='max-w-full overflow-x-hidden'>
+          {props.repo}
+        </a>
+      </div>
     </Link>
   )
 }
-
-
 
 const GitReposList = () => {
   const { userName } = useParams()
@@ -39,7 +38,7 @@ const GitReposList = () => {
         <Link to="/" id="go-back">%home%</Link>&nbsp;/&nbsp;
         <a id="repository-name">{userName}</a>
       </header>
-      <main className="pt-1 pb-5 px-10">
+      <main className="pt-2 pb-5 px-5">
         {isLoading ? <Placeholder /> : repos}
       </main>
     </div>
