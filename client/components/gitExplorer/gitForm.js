@@ -12,11 +12,10 @@ const GitFinder = () => {
     history.push(inputData)
   }
 
-  return (        <form className="block w-full" name="s" align="center">
-
+  return (
+    <form className="block w-full" name="s" align="center">
       <div className="inline-flex max-w-screen-sm w-full gap-5 justify-center flex-wrap bg-indigo-600 font-bold rounded-lg border shadow-lg p-10">
         <Head title="search form" />
-
         <input
           name="queryText"
           type='text'
@@ -35,9 +34,8 @@ const GitFinder = () => {
           onClick={buttonHandler}>
           Go
         </button>
-
-      </div>        </form>
-
+      </div>
+    </form>
   )
 }
 
