@@ -12,26 +12,32 @@ const GitFinder = () => {
     history.push(inputData)
   }
 
+  return (        <form className="block w-full" name="s" align="center">
 
-  return (
-    <div className="inline-flex max-w-screen-sm w-full gap-5 justify-center flex-wrap bg-indigo-600 font-bold rounded-lg border shadow-lg p-10">
-      <Head title="GitHub explorer!" />
-      <input
-        type='text'
-        className='flex-grow rounded-lg px-2'
-        autoComplete="off"
-        id='input-field'
-        value={inputData}
-        onChange={inputHandler}
-        placeholder="Enter %username%"
-      />
-      <button
-        type='button'
-        className="px-4 rounded-lg border text-white hover:bg-yellow-500"
-        id="search-button"
-        onClick={buttonHandler}
-      >Go</button>
-    </div>
+      <div className="inline-flex max-w-screen-sm w-full gap-5 justify-center flex-wrap bg-indigo-600 font-bold rounded-lg border shadow-lg p-10">
+        <Head title="search form" />
+
+        <input
+          name="queryText"
+          type='text'
+          className='flex-grow rounded-lg px-2 font-bold'
+          autoComplete="off"
+          id='input-field'
+          value={inputData}
+          onChange={inputHandler}
+          placeholder="Enter %username%"
+        />
+        <button
+          name="submitText"
+          type="submit"
+          className="px-4 rounded-lg border text-white hover:bg-yellow-500"
+          id="search-button"
+          onClick={buttonHandler}>
+          Go
+        </button>
+
+      </div>        </form>
+
   )
 }
 
