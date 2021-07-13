@@ -5,6 +5,19 @@ import axios from 'axios'
 import Head from '../head'
 import Placeholder from './gitPlaceholder'
 
+
+const LinkInList = props => {
+  return (
+    <Link
+      className='block max-w-full overflow-x-hidden -mx-6 px-6 py-2 hover:bg-indigo-800'
+      to={`/${props.user}/${props.repo}`}>
+      {props.repo}
+    </Link>
+  )
+}
+
+
+
 const GitReposList = () => {
   const { userName } = useParams()
   const [isLoading, setLoading] = useState(true)
@@ -12,28 +25,23 @@ const GitReposList = () => {
 
   useEffect(() => {
     axios.get(`https://api.github.com/users/${userName}/repos`)
-    .then(data => data.data)
-    .then(data=>{
-      setRepos(data.map(repo => <div key={repo.id}><Link to={`/${userName}/${repo.name}`}>{repo.name}</Link> </div>))
-      setLoading(false)
-    })
+      .then(data => data.data)
+      .then(data => {
+        setRepos(data.map(repo => <LinkInList key={repo.id} user={userName} repo={repo.name} />))
+        setLoading(false)
+      })
   }, [])
 
   return (
-    <div>
-      <Head title="Hello" />
-      <div className="flex items-center justify-center h-screen">
-        <div className="bg-indigo-800 hover:text-red-500 text-white font-bold rounded-lg border shadow-lg p-10">
-          <div id="header">
-            <a id="repository-name">{userName}</a>
-            <Link to="/" id="go-back">Go back</Link><br/>
-          </div>
-          {isLoading && <Placeholder/>}
-          {!isLoading && repos}
-          
-
-        </div>
-      </div>
+    <div className="max-w-screen-sm w-full bg-indigo-300 text-white font-bold border rounded-lg shadow-lg">
+      <Head title="list of user's repositories" />
+      <header id="header" className="text-xl text-left flex-wrap bg-indigo-600 font-bold rounded-lg border shadow-lg p-10">
+        <Link to="/" id="go-back">%home%</Link>&nbsp;/&nbsp;
+        <a id="repository-name">{userName}</a>
+      </header>
+      <main className="pt-1 pb-5 px-10">
+        {isLoading ? <Placeholder /> : repos}
+      </main>
     </div>
   )
 }

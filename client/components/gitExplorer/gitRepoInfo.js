@@ -13,7 +13,7 @@ const GitRepoInfo = () => {
   const [readmeText, setReadmeText] = useState('')
 
   useEffect(() => {
-      axios.get(`https://api.github.com/repos/${userName}/${repositoryName}/readme`).then(data => data.data)
+    axios.get(`https://api.github.com/repos/${userName}/${repositoryName}/readme`).then(data => data.data)
       .then(readmeRequest => {
         setReadmeData(readmeRequest)
         axios.get(readmeRequest.download_url).then(data => data.data).then(readmeRaw => {
@@ -24,24 +24,19 @@ const GitRepoInfo = () => {
   }, [])
 
   return (
-    <div>
-      <Head title="Hello" />
-      <div className="flex items-center justify-center h-screen">
-
-        <div className="bg-indigo-800 hover:text-red-500 text-white font-bold rounded-lg border shadow-lg p-10">
-        <div id="header">
-            <a id="username">Username : {userName}</a>
-            <a id="repository">Repository : {repositoryName}</a>
-            <Link to="/" id="go-back">Go back</Link><br/>
-            <Link to={`/${userName}`} id="go-repository-list">/{userName}</Link><br/>
+    <div className="max-w-screen-sm w-full bg-indigo-300 text-white font-bold border rounded-lg shadow-lg">
+      <Head title="README of repo" />
+      <header id="header" className="text-xl text-left flex-wrap bg-indigo-600 font-bold rounded-lg border shadow-lg p-10">
+        <Link to="/" id="go-back">%home%</Link>&nbsp;/&nbsp;
+        <Link to={`/${userName}`} id="go-repository-list">{userName}</Link>&nbsp;/&nbsp;
+         <a id="repository-name">{repositoryName}</a>
+      </header>
+      <main className="py-5 px-10 overflow-x-auto">
+        <div id="description">
+          {isLoading ? <Placeholder /> : <Markdown>{readmeText}</Markdown>}
+          {`It's: ${readmeData}`}
         </div>
-          This is text about repo {repositoryName} of {userName}.
-          <div id="description">
-            {isLoading ? <Placeholder/> : <Markdown>{readmeText}</Markdown>}
-            {`It's: ${readmeData}`}
-          </div>
-        </div>
-      </div>
+      </main>
     </div>
   )
 }

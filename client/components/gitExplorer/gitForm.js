@@ -14,23 +14,23 @@ const GitFinder = () => {
 
 
   return (
-    <div>
+    <div className="inline-flex max-w-screen-sm w-full gap-5 justify-center flex-wrap bg-indigo-600 font-bold rounded-lg border shadow-lg p-10">
       <Head title="GitHub explorer!" />
-      <div className="flex items-center justify-center h-screen">
-
-
-        <div className="bg-indigo-800 hover:text-red-500 text-white font-bold rounded-lg border shadow-lg p-10">
-        <input
+      <input
         type='text'
+        className='flex-grow px-2'
         autoComplete="off"
         id='input-field'
         value={inputData}
         onChange={inputHandler}
         placeholder="Enter %username%"
-         />
-        <button type='button' id="search-button" onClick={buttonHandler}>Go</button>
-        </div>
-      </div>
+      />
+      <button
+        type='button'
+        className="px-4 border text-white hover:bg-yellow-500"
+        id="search-button"
+        onClick={buttonHandler}
+      >Go</button>
     </div>
   )
 }
